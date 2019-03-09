@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+
+body, html, p {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  position: fixed;
+  border-bottom: 2px solid orange;
+  background-color: rgba(60, 60, 60, 0.8);
+  width: 100%;
+  height: 3em;
+  z-index: 5;
+  align-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header nav {
+  position: absolute;
+  margin: auto;
+  right: 2em;
+  top: 0.6em;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-left: 2em;
+  padding-right: 1.25em;
+  text-align: center;
+  color: white;
+}
+
+nav ul li a:link,nav ul li a:visited{
+  color: white;
+  text-decoration: none;
+}
+
+header nav ul li a:hover{
+  text-decoration: underline;
+}
+
+header nav ul li a:active{
+  color: orange;
+}
+
+#logo a {
+  color: white;
+  margin-left: 1em;
+  text-decoration: none;
+}
+
+#logo {
+  font-family: 'Roboto', sans-serif;
+  margin: 0.1em;
+  font-size: 2em;
+  font-weight: 900;
+  color: white;
+}
+
+
+#productContainer {
+  padding-top: 5em;
+}
+
+#productNav {
+  padding-top: 5em;
+  text-align: center;
+}
+
+#showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.categoryTitle {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 5em;
+  margin-bottom: 1em;
+  flex: 0;
+  padding-top: 2em;
+  flex-basis: 100%;
+  text-align: center;
+  border-bottom: 1px solid orange;
+  color: orange;
+}
+
+.productsCard {
+  margin-left: 0.6%;
+  margin-right: 0.67%;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  background-color: white;
+  flex: 0;
+  min-width: 20em;
+  flex-basis: 32%;
+  height: auto;
+}
+
+.productsCard img {
+  width: 100%;
+}
+
+.cardTitle, .cardPrice, .cardExtra {
+  background-color: lightpink;
+}
