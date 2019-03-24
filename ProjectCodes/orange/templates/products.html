@@ -6,51 +6,27 @@
   </div>
   <div id="productContainer">
     <div id="showcase">
-      <div class="categoryTitle">
-        <h2>Category title goes here</h2>
-      </div>
-      <div class="productCard">
-        <a href="#"><img src="/static/images/product1.png" alt=""></a>
-        <div class="cardTitle">
-          <h2>Product Title</h2>
+      {% for category in categoryList %}
+        <div class="categoryTitle">
+          <h2>{{ category['name'] }}</h2>
         </div>
-        <div class="cardPrice">
-          <span>Product Price</span>
-        </div>
-        <div class="cardExtra">
-          <span>Additional Text</span>
-        </div>
-      </div>
-      <div class="categoryTitle">
-        <h2>Category title goes here</h2>
-      </div>
-      <div class="productCard">
-        <a href="#"><img src="/static/images/product1.png" alt=""></a>
-        <div class="cardTitle">
-          <h2>Product Title</h2>
-        </div>
-        <div class="cardPrice">
-          <span>Product Price</span>
-        </div>
-        <div class="cardExtra">
-          <span>Additional Text</span>
-        </div>
-      </div>
-      <div class="categoryTitle">
-        <h2>Category title goes here</h2>
-      </div>
-      <div class="productCard">
-        <a href="#"><img src="/static/images/product1.png" alt=""></a>
-        <div class="cardTitle">
-          <h2>Product Title</h2>
-        </div>
-        <div class="cardPrice">
-          <span>Product Price</span>
-        </div>
-        <div class="cardExtra">
-          <span>Additional Text</span>
-        </div>
-      </div>
+        {% for product in productList %}
+          {% if product['categoryID'] == category['id'] %}
+            <div class="productCard">
+              <a href="#"><img src="/static/images/product1.png" alt=""></a>
+              <div class="cardTitle">
+                <h2>{{ product['name'] }}</h2>
+              </div>
+              <div class="cardPrice">
+                <span>{{ product['price'] }}</span>
+              </div>
+              <div class="cardExtra">
+                <span>Additional Text</span>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
     </div>
   </div>
 {% endblock%}

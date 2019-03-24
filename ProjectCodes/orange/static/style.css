@@ -89,7 +89,7 @@ header nav ul li a:active{
   color: orange;
 }
 
-.productsCard {
+.productCard {
   margin-left: 0.6%;
   margin-right: 0.67%;
   margin-top: 1.5em;
@@ -101,7 +101,7 @@ header nav ul li a:active{
   height: auto;
 }
 
-.productsCard img {
+.productCard img {
   width: 100%;
 }
 
