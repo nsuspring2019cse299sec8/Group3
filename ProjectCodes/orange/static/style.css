@@ -32,16 +32,16 @@ nav ul li {
   color: white;
 }
 
-nav ul li a:link,nav ul li a:visited{
+nav ul li a:link,nav ul li a:visited {
   color: white;
   text-decoration: none;
 }
 
-header nav ul li a:hover{
+header nav ul li a:hover {
   text-decoration: underline;
 }
 
-header nav ul li a:active{
+header nav ul li a:active {
   color: orange;
 }
 
