@@ -1,0 +1,6 @@
+Fetching all product categories for women
+Select*
+From 'product_category'
+Where catagory _id Between 1000 AND 1999
+
+
