@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from productsData import products_info, category_info
-from usersData import RegistrationForm
+from usersData import RegistrationForm, RegisterUser
 
 
 application = Flask(__name__)
@@ -22,9 +22,18 @@ def products(category):
 def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        return render_template('register.html')
+        user = RegisterUser(form)
+        user.store_record()
+        flash("Your are Successfully Registered")
+        return redirect('/login/')
     return render_template('register.html', form=form)
 
 
+@application.route('/login/')
+def login():
+    return render_template('login.html')
+
+
 if __name__ == '__main__':
+    application.secret_key = "//This_is_really_secret"
     application.run(debug=True)
