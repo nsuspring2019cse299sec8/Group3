@@ -1,3 +1,7 @@
+** Product Categories 1000 to 1999 are for women.
+** Product Categories 2000 to 2999 are for men.
+** Product Categories 8000 is for Deleted products.
+
 Fetching all product categories for women
 Select*
 From 'product_category'
@@ -14,3 +18,9 @@ Fetching all product details for women
 Select *
 From 'product_details'
 Where catagory _id Between 1000 AND 1999
+
+
+Fetching all product details for men
+Select *
+From 'product_details'
+Where catagory _id Between 2000 AND 2999
