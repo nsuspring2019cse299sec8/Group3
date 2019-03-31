@@ -4,3 +4,9 @@ From 'product_category'
 Where catagory _id Between 1000 AND 1999
 
 
+Fetching all product categories for men
+Select *
+From 'product_category'
+Where catagory _id Between 2000 AND 2999
+
+
