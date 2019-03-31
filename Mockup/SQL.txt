@@ -10,3 +10,7 @@ From 'product_category'
 Where catagory _id Between 2000 AND 2999
 
 
+Fetching all product details for women
+Select *
+From 'product_details'
+Where catagory _id Between 1000 AND 1999
