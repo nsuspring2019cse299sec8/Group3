@@ -36,3 +36,14 @@ select password
 from user_details
 where User-id=2
 
+Inserting values of every column of table Cart
+Insert Into cart(salesid ,userid , totalAmmount, date)
+VALUES(10 ,1 ,300 ,10-01-19) 
+
+
+Inserting values of every column of table Cart
+Insert Into cart(salesid ,userid , totalAmmount, date)
+VALUES(30 ,2 ,400 ,15-01-19) 
+
+
+
