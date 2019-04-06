@@ -1,8 +1,8 @@
-from databaseConnection import database, dataCursor
+from databaseConnection import database
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 
 
-class RegisterUser:
+class RegisterUser(object):
     def __init__(self, form):
         self.firstName = form.firstName.data
         self.lastName = form.lastName.data
@@ -12,13 +12,15 @@ class RegisterUser:
         self.password = form.password.data
 
     def store_record(self):
+        data_cursor = database.connect()
         sql = "INSERT INTO user_details " \
               "(userID,password,firstName,lastName,address,cellPhoneNumber,emailAddress,status)" \
               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         values = (self.cellPhone, self.firstName, self.lastName, self.address,
                   self.emailAddress, self.cellPhone, self.password, "active")
-        dataCursor.execute(sql, values)
+        data_cursor.execute(sql, values)
         database.commit()
+        data_cursor.close()
 
 
 class RegistrationForm(Form):
