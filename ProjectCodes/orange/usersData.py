@@ -23,7 +23,7 @@ class RegisterUser:
 
 class RegistrationForm(Form):
     firstName = StringField('First Name', [
-        validators.Length(min=1, max=50),])
+        validators.Length(min=1, max=50)])
     lastName = StringField('Last Name', [
         validators.Length(min=1, max=50)])
     address = StringField('Address', [
