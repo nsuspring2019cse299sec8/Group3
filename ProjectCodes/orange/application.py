@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 from productsData import ProductsData
-from usersData import RegistrationForm, RegisterUser
+from usersData import RegistrationForm, UserAuthentication
 
 
 application = Flask(__name__)
@@ -23,7 +23,7 @@ def products(category):
 def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = RegisterUser(form)
+        user = UserAuthentication.registration_details(form)
         user.store_record()
         flash("Your are Successfully Registered")
         return redirect('/login/')
@@ -32,7 +32,14 @@ def register():
 
 @application.route('/login/')
 def login():
+    user = UserAuthentication.login_details("98765432109", "firstname")
+    user.login_user()
     return render_template('login.html')
+
+
+@application.route('/logout')
+def logout():
+    flash("You are Logged Out", 'success')
 
 
 if __name__ == '__main__':

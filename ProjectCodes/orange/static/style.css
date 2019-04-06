@@ -6,6 +6,11 @@ body, html, p {
   height: 100%;
 }
 
+#ceiling {
+  width: 100%;
+  height: 3em;
+}
+
 header {
   position: fixed;
   border-bottom: 2px solid orange;
