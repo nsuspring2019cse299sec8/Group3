@@ -9,5 +9,3 @@ try:
     )
 except mysql.connector.Error as err:
     print("Err")
-else:
-    dataCursor = database.cursor(dictionary=True)

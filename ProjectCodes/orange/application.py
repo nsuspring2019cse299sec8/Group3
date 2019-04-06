@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash
-from productsData import products_info, category_info
+from productsData import ProductsData
 from usersData import RegistrationForm, RegisterUser
 
 
@@ -13,8 +13,9 @@ def index():
 
 @application.route('/products/<category>/')
 def products(category):
-    category_list = category_info(category)
-    product_list = products_info(category)
+    product = ProductsData(category)
+    category_list = product.category_info()
+    product_list = product.products_info()
     return render_template('products.html', product_list=product_list, category_list=category_list)
 
 
