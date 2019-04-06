@@ -24,3 +24,15 @@ Fetching all product details for men
 Select *
 From 'product_details'
 Where catagory _id Between 2000 AND 2999
+
+
+Fetching the password of a given user_id  from user_details
+select password 
+from user_details
+where User-id=1
+
+Fetching the password of a given user_id  from user_details
+select password 
+from user_details
+where User-id=2
+
