@@ -24,12 +24,18 @@
           <li><a href="/products/men/">Men</a></li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Cart  <span class="badge"></span></a></li>
-          <li><a href="/register/">User</a></li>
+          {% if session.logged_in %}
+            <li><a href="/logout/">{{ session.username }} | Logout</a></li>
+          {% else %}
+            <li><a href="/register/">User</a></li>
+          {% endif %}
         </ul>
       </nav>
-      {% include "includes/_messages.html" %}
     </div>
   </header>
+  <div id="ceiling"></div>
+  {% include "includes/_messages.html" %}
+  
   {% block body %}
   {% endblock %}
 </body>
