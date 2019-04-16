@@ -50,5 +50,10 @@ SELECT quantityLeft
 FROM `product_details`
  WHERE categoryID=1001
 
+Updating quantity of a product
+UPDATE 'Product_details'
+SET quantityleft=120
+WHERE category_Id=1001
+
 
 
