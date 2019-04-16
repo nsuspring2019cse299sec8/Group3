@@ -60,6 +60,10 @@ UPDATE 'Product_details'
 SET quantityleft=130
 WHERE category_Id=1001 AND product_id=2
 
+Updating Name of a product for unique category_id and product_id
+UPDATE 'Product_details'
+SET Product1=ProductP
+WHERE category_Id=1001 AND product_id=1
 
 
 
