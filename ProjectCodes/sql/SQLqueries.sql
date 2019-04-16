@@ -75,6 +75,9 @@ UPDATE 'Product_details'
 SET price=600
 WHERE category_Id=1001 AND product_id=1
 
+Inserting in column of cart
+Insert Into cart(salesid ,userid , totalAmmount, date)
+VALUES(10 ,1 ,300 ,10-01-19)
 
 
 Updating price of a product for unique category_id and product_id
