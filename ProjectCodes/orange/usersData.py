@@ -1,7 +1,5 @@
 from datetime import datetime
-from flask import session, flash
-from werkzeug.utils import redirect
-
+from flask import session, flash, redirect
 from databaseConnection import database
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from exception import Error
