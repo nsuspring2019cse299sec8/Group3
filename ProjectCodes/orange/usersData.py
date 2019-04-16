@@ -27,8 +27,8 @@ class UserAuthentication(object):
         return cls(user_id, password, first_name, last_name, address, email_address, cell_phone)
 
     @classmethod
-    def login_details(cls, username, password):
-        return cls(username, password, None, None, None, None, None)
+    def login_details(cls, form):
+        return cls(form.username.data, form.password.data, None, None, None, None, None)
 
     def store_record(self):
         data_cursor = database.cursor()
@@ -63,20 +63,19 @@ class UserAuthentication(object):
 
 
 class RegistrationForm(Form):
-    firstName = StringField('First Name', [
-        validators.Length(min=1, max=50)])
-    lastName = StringField('Last Name', [
-        validators.Length(min=1, max=50)])
-    address = StringField('Address', [
-        validators.Length(min=1, max=50)])
-    emailAddress = StringField('Email Address', [
-        validators.Length(min=5, max=50)])
-    cellPhone = StringField('Cell Phone Number', [
-        validators.Length(min=11, max=11)])
-    password = PasswordField('Password', [
-        validators.DataRequired(),
-        validators.Length(min=8),
-        validators.EqualTo('confirmPassword')])
-    confirmPassword = PasswordField('Repeat Password', [
-        validators.DataRequired(),
-        validators.Length(min=8)])
+    firstName = StringField('First Name', [validators.Length(min=1, max=50)])
+    lastName = StringField('Last Name', [validators.Length(min=1, max=50)])
+    address = StringField('Address', [validators.Length(min=1, max=50)])
+    emailAddress = StringField('Email Address', [validators.Length(min=5, max=50)])
+    cellPhone = StringField('Cell Phone Number', [validators.Length(min=11, max=11)])
+    password = PasswordField('Password', [validators.DataRequired(),
+                                          validators.Length(min=8),
+                                          validators.EqualTo('confirmPassword')])
+    confirmPassword = PasswordField('Repeat Password', [validators.DataRequired(),
+                                                        validators.Length(min=8)])
+
+
+class LoginForm(Form):
+    username = StringField('Username', [validators.DataRequired(), validators.Length(min=11, max=11)])
+    password = PasswordField('Password', [validators.DataRequired(), validators.Length(min=8)])
+

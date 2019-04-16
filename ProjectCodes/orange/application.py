@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, session
 from productsData import ProductsData
-from usersData import RegistrationForm, UserAuthentication
+from usersData import RegistrationForm, LoginForm, UserAuthentication
 
 
 application = Flask(__name__)
@@ -30,11 +30,14 @@ def register():
     return render_template('register.html', form=form)
 
 
-@application.route('/login/')
+@application.route('/login/', methods=['GET', 'POST'])
 def login():
-    user = UserAuthentication.login_details("98765432109", "firstname")
-    user.login_user()
-    return render_template('login.html')
+    form = LoginForm(request.form)
+    if request.method == 'POST' and form.validate():
+        user = UserAuthentication.login_details(form)
+        user.login_user()
+        flash("Your are Logged In")
+    return render_template('login.html', form=form)
 
 
 @application.route('/logout')
