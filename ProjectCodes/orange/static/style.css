@@ -113,3 +113,14 @@ header nav ul li a:active {
 .cardTitle, .cardPrice, .cardExtra {
   background-color: lightpink;
 }
+
+.registration_form {
+  background-color: lightpink;
+  margin-top: 5em;
+}
+
+#formheader {
+  color: orange;
+  padding-bottom: 1em;
+  font-size: 3em;
+}
