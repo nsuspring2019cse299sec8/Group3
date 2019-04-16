@@ -45,5 +45,10 @@ Inserting values of every column of table Cart
 Insert Into cart(salesid ,userid , totalAmmount, date)
 VALUES(30 ,2 ,400 ,15-01-19) 
 
+Fetcing Quantity left/Quantity for a random product
+SELECT quantityLeft 
+FROM `product_details`
+ WHERE categoryID=100
+
 
 
