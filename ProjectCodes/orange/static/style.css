@@ -111,16 +111,39 @@ header nav ul li a:active {
 }
 
 .cardTitle, .cardPrice, .cardExtra {
-  background-color: lightpink;
+  background-color: orange;
 }
 
 .registration_form {
-  background-color: lightpink;
-  margin-top: 5em;
+  width: 500%;
+  text-align:left;
+  text-decoration-style: double;
+  background-color: orange;
+  margin-top: 5px;
+  padding: 50px 350px;
+  margin: -5px 200px;
+  opacity: 0.8;
 }
 
 #formheader {
-  color: orange;
+  color: black;
   padding-bottom: 1em;
   font-size: 3em;
+  opacity: 0.8;
+
+}
+#form-group{
+  width: 50px;
+  font-size: 4em;
+    padding: 8px;
+    border-radius: 8px;
+    outline: 0px;
+}
+#btn-primary{
+  width: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      outline: 0px;
+      background-color: blue;
+
 }
