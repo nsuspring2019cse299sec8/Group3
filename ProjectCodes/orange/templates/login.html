@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <div class="container login_form">
+  <div class="container form_container">
     <h1 id="formheader">Log In</h1>
     {% from "includes/_formhelpers.html" import render_field %}
     <form class="" method="POST">
-      <div class="form-group">
+      <div class="form-group form_group">
         {{ render_field(form.username, placeholder='Enter username', class_='form-control') }}
       </div>
-      <div class="form-group">
+      <div class="form-group form_group">
         {{ render_field(form.password, placeholder='Enter password', class_='form-control') }}
       </div>
-      <p><input type="submit" class="btn btn-primary" value="Register"></p>
+      <p><input type="submit" class="btn btn-outline-dark form_button" value="Login"></p>
     </form>
   </div>
 {% endblock %}
