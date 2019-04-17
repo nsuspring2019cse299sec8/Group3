@@ -45,6 +45,13 @@ def logout():
     flash("You are Logged Out", 'success')
 
 
+@application.route('/cart/')
+@application.route('/cart/add/<category_id>/<product_id>/')
+def cart(category_id, product_id):
+
+    return render_template('cart.html')
+
+
 if __name__ == '__main__':
     application.secret_key = "//This_is_really_secret"
     application.run(debug=True)
