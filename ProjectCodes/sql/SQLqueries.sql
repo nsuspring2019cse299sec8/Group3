@@ -122,3 +122,8 @@ where sales-id=3
 Adding column price in table orders
 ALTER TABLE orders
 ADD price float;
+
+Updating price in table orders
+UPDATE orders
+SET price=150
+where sales_id=1
