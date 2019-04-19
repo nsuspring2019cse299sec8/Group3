@@ -1,4 +1,6 @@
-** Product Categories 1000 to 1999 are for women.
+SELECT quantity
+from orders
+where category id=1001** Product Categories 1000 to 1999 are for women.
 ** Product Categories 2000 to 2999 are for men.
 ** Product Categories 8000 is for Deleted products.
 
@@ -85,6 +87,10 @@ UPDATE 'Product_details'
 SET price=600
 WHERE category_Id=1001 AND product_id=1
 
+Fetching quantity from table orders
+SELECT quantity
+from orders
+where category id=1001
 
 
 
