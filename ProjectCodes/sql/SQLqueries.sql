@@ -118,3 +118,7 @@ where sales-id=2
 Update orders
 SET Name='kurti'
 where sales-id=3
+
+Adding column price in table orders
+ALTER TABLE orders
+ADD price float;
