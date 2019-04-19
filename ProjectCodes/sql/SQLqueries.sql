@@ -136,3 +136,8 @@ Updating values in column totalprice in table orders
 UPDATE orders
 SET totalprice=500
 where sale_id=2
+
+Fething name and price for a particular sales-id from table orders
+SELECT  Name , price
+FROM `orders`
+where salesID=2
