@@ -141,3 +141,8 @@ Fething name and price for a particular sales-id from table orders
 SELECT  Name , price
 FROM `orders`
 where salesID=2
+
+Fething name and totalprice for a particular sales-id from table orders
+SELECT  Name , totalprice
+FROM `orders`
+ where salesID=2
