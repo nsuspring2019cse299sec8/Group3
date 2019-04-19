@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="container">
+    <div class="product_upload">
+      <h1 class="formheader">Add New Product</h1>
+      <form name="addProductForm" enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+          <label for="product_name">Product Name:</label>
+          <input type="text" class="form-control" id="product_name" placeholder="Product Name" name="product_name" required>
+        </div>
+        <div class="form-group">
+          <label for="category_id">Category ID:</label>
+          <input type="number" class="form-control" id="category_id" placeholder="Category ID" name="category_id" required>
+        </div>
+        <div class="form-group">
+          <label for="product_id">Product ID:</label>
+          <input type="number" class="form-control" id="product_id" placeholder="Product ID" name="product_id" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" class="form-control" id="price" placeholder="Price" name="price" required>
+        </div>
+        <div class="form-group">
+          <label for="cost">Cost:</label>
+          <input type="number" class="form-control" id="cost" placeholder="Cost" name="cost" required>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity to be added:</label>
+          <input type="number" class="form-control" id="quantity" placeholder="Quantity to be added" name="quantity" required>
+        </div>
+        <div class="form-group">
+          <label for="product_image">Add Image:</label>
+          <input type="file" class="form-control" id="product_image" name="product_image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+      </form>
+    </div>
+    <div class="products_view">
+      <table class="table-stripped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Category ID</th>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Quantity Left</th>
+            <th>Price</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products_list %}
+            <tr>
+              <td><img src='static/images/product1.png' alt=''></td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['categoryID'] }}" name="{{ product['categoryID'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['productID'] }}" name="{{ product['productID'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['name'] }}" name="{{ product['name'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['price'] }}" name="{{ product['price'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['cost'] }}" name="{{ product['cost'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <form action="" class="form-group" method="POST">
+                  <div class='input-group'>
+                    <input type='text' class='form-control' placeholder="{{ product['quantity'] }}" name="{{ product['product_id'] }}">
+                    <div class='input-group-btn'>
+                      <button class='btn btn-default' type='submit'>Update</button>
+                    </div>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

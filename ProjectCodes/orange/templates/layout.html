@@ -23,11 +23,11 @@
           <li><a href="/products/women/">Women</a></li>
           <li><a href="/products/men/">Men</a></li>
           <li><a href="#">About Us</a></li>
-          <li><a href="#">Cart  <span class="badge"></span></a></li>
           {% if session.logged_in %}
+            <li><a href="/cart/view/">Cart  <span class="badge">{{ session.cart }}</span></a></li>
             <li><a href="/logout/">{{ session.username }} | Logout</a></li>
           {% else %}
-            <li><a href="/register/">User</a></li>
+            <li><a href="/login/">User</a></li>
           {% endif %}
         </ul>
       </nav>
