@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import session, flash, redirect
+from flask import session
 from databaseConnection import database
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from exception import Error
@@ -54,8 +54,8 @@ class UserAuthentication(object):
                 session['user_id'] = self.userID
                 session['username'] = sql_result['firstName']
                 session['session_id'] = self.userID + str(timestamp)
-                flash("You're SUCCESSFULLY logged in.", 'success')
-                return redirect('/')
+                session['cart'] = 0
+                return True
             else:
                 raise Error("Passwords did not match")
         else:

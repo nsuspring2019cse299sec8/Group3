@@ -153,3 +153,39 @@ header nav ul li a:active {
   margin-top: 2em;
   margin-left: 70%;
 }
+
+#cart_alert {
+  margin-top: 10em;
+}
+
+.alert {
+  text-align: center;
+}
+
+.table_container {
+  margin-top: 7em;
+  width: 50%;
+}
+
+.products_table th, .products_table td {
+  width: 5em;
+  padding: 0.5em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.products_table tbody tr img {
+  width: 100%;
+}
+
+#table_subtotal {
+  text-align: right;
+}
+
+#cart_header, #cart_price {
+  color: orange;
+  padding-bottom: 0.25em;
+  margin-bottom: 1.25em;
+  font-size: 3em;
+  opacity: 0.8;
+}
