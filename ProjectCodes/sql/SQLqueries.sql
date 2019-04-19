@@ -97,4 +97,7 @@ Update 'Orders'
 SET quantity=250
 where product id=2
 
+Inserting values in table orders
+Insert INTO orders(sales_id ,category_id,product_id ,quantity)
+values(1 ,1001,1,140)
 
