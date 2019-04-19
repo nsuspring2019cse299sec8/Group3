@@ -154,3 +154,10 @@ DROP COLUMN price
 
 ALTER TABLE orders
 DROP COLUMN name
+
+
+Fetching name, price , subtotal price for a given sales_id
+SELECT orders.salesID, product_details.price, product_details.name,  orders.quantity,SUM(price), quantity*price AS subtotal
+FROM orders
+INNER JOIN product_details ON orders.categoryID =product_details.categoryID
+AND salesID=1
