@@ -146,3 +146,11 @@ Fething name and totalprice for a particular sales-id from table orders
 SELECT  Name , totalprice
 FROM `orders`
  where salesID=2
+Deopping column name and price from table orders
+ALTER TABLE orders
+DROP COLUMN price
+
+
+
+ALTER TABLE orders
+DROP COLUMN name
