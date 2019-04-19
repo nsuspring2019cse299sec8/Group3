@@ -92,5 +92,9 @@ SELECT quantity
 from orders
 where category id=1001
 
+Updating quantity from table orderds
+Update 'Orders'
+SET quantity=250
+where product id=2
 
 
