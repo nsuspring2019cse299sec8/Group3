@@ -127,3 +127,7 @@ Updating price in table orders
 UPDATE orders
 SET price=150
 where sales_id=1
+
+Adding column totalprice in table orders
+ ALTER TABLE orders
+ADD totalprice float;
