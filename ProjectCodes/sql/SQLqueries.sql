@@ -161,3 +161,12 @@ SELECT orders.salesID, product_details.price, product_details.name,  orders.quan
 FROM orders
 INNER JOIN product_details ON orders.categoryID =product_details.categoryID
 AND salesID=1
+ 
+
+Fetching total price for a product for a given salesid
+SELECT orders.salesID, product_details.price, product_details.name,SUM(price) AS totalprice
+ 
+FROM orders
+
+INNER JOIN product_details ON orders.categoryID =product_details.categoryID
+AND salesID=1
