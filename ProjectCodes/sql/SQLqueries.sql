@@ -131,3 +131,8 @@ where sales_id=1
 Adding column totalprice in table orders
  ALTER TABLE orders
 ADD totalprice float;
+
+Updating values in column totalprice in table orders
+UPDATE orders
+SET totalprice=500
+where sale_id=2
