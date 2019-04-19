@@ -101,3 +101,7 @@ Inserting values in table orders
 Insert INTO orders(sales_id ,category_id,product_id ,quantity)
 values(1 ,1001,1,140)
 
+
+Insrting query to add column Name in table orders
+Alter TABLE orders
+ADD Name varchar(25)
