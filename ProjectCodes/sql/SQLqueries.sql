@@ -105,3 +105,16 @@ values(1 ,1001,1,140)
 Insrting query to add column Name in table orders
 Alter TABLE orders
 ADD Name varchar(25)
+
+Updating column 'Name' of table orders
+Update orders
+SET Name='shirt'
+where sales-id=1
+
+Update orders
+SET Name='pant'
+where sales-id=2
+
+Update orders
+SET Name='kurti'
+where sales-id=3
