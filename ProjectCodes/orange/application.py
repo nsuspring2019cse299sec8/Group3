@@ -3,7 +3,7 @@ from flask_socketio import SocketIO
 from productsData import ProductsData
 from cart import Cart
 from usersData import RegistrationForm, LoginForm, UserAuthentication
-from admin import admin_perform_query
+from admin import admin_perform_query, rename_image
 from exception import Error
 
 application = Flask(__name__)
