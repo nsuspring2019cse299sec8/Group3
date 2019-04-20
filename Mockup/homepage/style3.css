@@ -42,5 +42,55 @@
     font-weight: bold;
     color: white;
     line-height: 100px;
-    margin-left: 40px;
+    margin-left: 60px;
+}
+.text{
+    width: 100%;
+    margin-top: 185px;
+    text-transform: uppercase;
+    text-align: center;
+    color: orange;
+    
+}
+
+.text h4{
+    font-size: 18px;
+    font-family: sans-serif;
+}
+text h1{
+    font-size: 62px;
+    font-family: sans-serif;
+    font-weight: 700px;
+    margin: 14px 0px;
+}
+.text h3{
+    font-size:20px;
+    font-family: sans-serif;
+    
+}
+#buttonone{
+    background-color: orange;
+    border: none;
+    font-size: 12px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 40px;
+    width: 150px;
+    font-family: sans-serif;
+    margin-top: 25px;
+    border: 3px solid orange;
+    
+    
+}
+#buttontwo{
+    
+    background-color: transparent;
+    border: :none;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 40px;
+    border: 3px solid orange;
+    width: 150px;
 }
