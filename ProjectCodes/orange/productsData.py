@@ -61,6 +61,12 @@ class ProductsData(object):
         data_cursor.execute(sql, values)
         database.commit()
 
+    def delete_category(self, category_id):
+        data_cursor = database.cursor(dictionary=True)
+        sql = "DELETE FROM product_category WHERE categoryID=%s"
+        data_cursor.execute(sql, (category_id,))
+        database.commit()
+
     def update_category(self, column_name, new_value, target_category_id):
         self.sql = f"UPDATE product_category SET {column_name}=%s WHERE categoryID=%s"
         self.values = (new_value, target_category_id,)

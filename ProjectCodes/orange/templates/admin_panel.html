@@ -38,7 +38,7 @@
     </div>
     <div class="collapse" id="add_category_form">
       <h1 class="form_header">Add Category</h1>
-      <form name="addProductForm" action="action_page.php?addCat=TRUE" method="post">
+      <form name="addProductForm" action="/admin_panel/add_category/" method="post">
         <div class="form-group">
           <label for="category_name">Category Name:</label>
           <input type="text" class="form-control" id="category_name" placeholder="Category Name" name="category_name" required>
@@ -52,7 +52,7 @@
     </div>
     <div class="collapse" id="delete_catagory_form">
       <h1 class="form_header">Delete Category</h1>
-      <form name="addProductForm" action="action_page.php?delCat=TRUE" method="post">
+      <form name="addProductForm" action="/admin_panel/delete_category/" method="post">
         <div class="form-group">
           <label for="category_id">Category ID:</label>
           <input type="number" class="form-control" id="category_id" placeholder="Category ID" name="category_id" required>
@@ -62,13 +62,20 @@
     </div>
     <div class="collapse" id="update_image_form">
       <h1 class="form_header">Update Image</h1>
-      <form class='form-group' action='action_page.php?updateImage=TRUE' enctype='multipart/form-data' method='post'>
-      <div class='input-group'>
-        <input type='file' class='form-control' id='product_image' name='product_image' required>
-        <div class='input-group-append'>
-          <button class='btn btn-info' type='submit'>Update Image</button>
+      <form class='form-group' action="/admin_panel/update_image/" enctype='multipart/form-data' method='post'>
+        <div class="form-group">
+          <label for="category_id">Category ID:</label>
+          <input type="number" class="form-control" id="category_id" placeholder="Category ID" name="category_id" required>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="product_id">Product ID:</label>
+          <input type="number" class="form-control" id="product_id" placeholder="Product ID" name="product_id" required>
+        </div>
+        <div class="form-group">
+          <label for="product_image">Add Image:</label>
+          <input type="file" class="form-control" id="product_image" name="product_image" required>
+        </div>
+        <button type="submit" class="btn btn-info">Update Image</button>
       </form>
     </div>
   </div>
@@ -111,7 +118,7 @@
               <tr>
                 <td id="admin_view_image"><img src="/static/images/{{ product['categoryID'] }}_{{ product['productID'] }}.png" alt=''></td>
                 <td>
-                  <form action="#" class="form-group" method="POST">
+                  <form action="/admin_panel/change_product_category/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['categoryID'] }}" name="category_id" value="{{ product['categoryID'] }}">
                       <div class='input-group-append'>
@@ -121,7 +128,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="" class="form-group" method="POST">
+                  <form action="/admin_panel/update_product_id/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['productID'] }}" name="product_id" value="{{ product['productID'] }}">
                       <div class='input-group-append'>
@@ -131,7 +138,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="" class="form-group" method="POST">
+                  <form action="/admin_panel/update_name/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['name'] }}" name="name" value="{{ product['name'] }}">
                       <div class='input-group-append'>
@@ -141,7 +148,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="" class="form-group" method="POST">
+                  <form action="/admin_panel/update_price/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['price'] }}" name="price" value="{{ product['price'] }}">
                       <div class='input-group-append'>
@@ -151,7 +158,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="" class="form-group" method="POST">
+                  <form action="/admin_panel/update_cost/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['cost'] }}" name="cost" value="{{ product['cost'] }}">
                       <div class='input-group-append'>
@@ -161,7 +168,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="" class="form-group" method="POST">
+                  <form action="/admin_panel/update_quantity/{{ product['categoryID'] }}/{{ product['productID'] }}/" class="form-group" method="POST">
                     <div class='input-group'>
                       <input type='text' class='form-control' placeholder="{{ product['quantityLeft'] }}" name="quantity_left" value="{{ product['quantityLeft'] }}">
                       <div class='input-group-append'>
