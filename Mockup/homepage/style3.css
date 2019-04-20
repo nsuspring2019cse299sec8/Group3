@@ -108,4 +108,7 @@ body{
     border: 3px solid orange;
     width: 150px;
 }
-
+.img1{
+    width: auto;
+    height: auto;
+}
