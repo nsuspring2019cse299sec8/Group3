@@ -189,3 +189,7 @@ header nav ul li a:active {
   font-size: 3em;
   opacity: 0.8;
 }
+
+.admin_products_view {
+  width: 100%;
+}

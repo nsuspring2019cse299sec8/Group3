@@ -72,12 +72,28 @@ class Cart(object):
         cart_quantity = self.fetch_cart_quantity(category_id, product_id)
         quantity_left = self.fetch_quantity_left(category_id, product_id)
         data_cursor = database.cursor(dictionary=True)
-        sql = "DELETE FROM orders WHERE salesID=%S AND categoryID=%s AND productID=%s"
+        sql = "DELETE FROM orders WHERE salesID=%s AND categoryID=%s AND productID=%s"
         data_cursor.execute(sql, (self.sessionID, category_id, product_id,))
         database.commit()
         data_cursor.close()
         self.update_quantity_left(quantity_left+cart_quantity, category_id, product_id)
         session['cart'] -= cart_quantity
+
+    def cancel_cart(self,):
+        data_cursor = database.cursor(dictionary=True)
+        sql = "SELECT categoryID,productID,quantity FROM orders WHERE salesID=%s"
+        data_cursor.execute(sql, (self.sessionID,))
+        cart = data_cursor.fetchall()
+        if cart is not None:
+            sql = "DELETE FROM orders WHERE salesID=%s"
+            data_cursor.execute(sql, (self.sessionID,))
+            database.commit()
+        data_cursor.close()
+        for product in cart:
+            cart_quantity = product['quantity']
+            quantity_left = self.fetch_quantity_left(product['categoryID'], product['productID'])
+            self.update_quantity_left(quantity_left+cart_quantity, product['categoryID'], product['productID'])
+            session['cart'] -= cart_quantity
 
     def get_cart(self):
         data_cursor = database.cursor(dictionary=True)

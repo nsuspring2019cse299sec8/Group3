@@ -28,7 +28,10 @@
         {% endfor %}            
       </tbody>
     </table>
-    <h2 id="cart_price">Total Price: {{ total_amount['sum'] }}</h2>
+    <div>
+      <h2 id="cart_price">Total Price: {{ total_amount['sum'] }}</h2>
+      <td><a class="btn btn-danger" href="/cart/cancel/">Cancel Cart</a></td>
+    </div>
     {% else %}
     <div class="alert alert-info alert-dismissible fade show" id="cart_alert">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
