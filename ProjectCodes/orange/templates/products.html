@@ -13,7 +13,7 @@
         {% for product in product_list %}
           {% if product['categoryID'] == category['categoryID'] %}
             <div class="productCard">
-              <a href="#"><img src="/static/images/{{ product['categoryID'] }}{{ product['productID'] }}.png" alt=""></a>
+              <a href="#"><img src="/static/images/{{ product['categoryID'] }}_{{ product['productID'] }}.png" alt=""></a>
               <div class="cardTitle">
                 <h2>{{ product['name'] }}</h2>
               </div>

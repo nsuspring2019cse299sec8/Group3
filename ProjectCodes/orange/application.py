@@ -6,9 +6,6 @@ from usersData import RegistrationForm, LoginForm, UserAuthentication
 from admin import admin_perform_query
 from exception import Error
 
-
-UPLOAD_FOLDER = '/static/images'
-ALLOWED_EXTENSIONS = set('png')
 application = Flask(__name__)
 socketIO = SocketIO(application)
 
@@ -89,7 +86,7 @@ def cart_view(action, category_id=None, product_id=None):
         return redirect('/')
 
 
-@application.route('/admin_panel/<action>/')
+@application.route('/admin_panel/<action>/', methods=['Get', 'Post'])
 @application.route('/admin_panel/<action>/<category_id>/', methods=['GET', 'POST'])
 @application.route('/admin_panel/<action>/<category_id>/<product_id>/', methods=['GET', 'POST'])
 def admin_panel(action, category_id=None, product_id=None):
@@ -100,7 +97,11 @@ def admin_panel(action, category_id=None, product_id=None):
         return render_template('admin_panel.html', category_list=category_list, product_list=product_list)
     else:
         if request.method == 'POST':
-            admin_perform_query(action, request.form, category_id, product_id, product)
+            if 'product_image' not in request.files:
+                admin_perform_query(action, request.form, category_id, product_id, product, None)
+            else:
+                admin_perform_query(action, request.form, category_id, product_id, product,
+                                    request.files['product_image'])
             """
             except Exception:
                 flash("Query Unsuccessful", 'danger')
@@ -121,5 +122,4 @@ def connection_closed():
 
 if __name__ == '__main__':
     application.secret_key = "//This_is_really_secret"
-    application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     application.run(debug=True)
