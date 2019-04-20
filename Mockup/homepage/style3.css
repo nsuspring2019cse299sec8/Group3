@@ -108,7 +108,102 @@ body{
     border: 3px solid orange;
     width: 150px;
 }
-.img1{
-    width: auto;
-    height: auto;
+.container{
+    width: 1280px;
+    min-height: 500px;
+    background: orange;
+    margin: 0px auto 0;
+    display: flex;s
+    flex-direction: row;
+    flex-wrap: wrap;
 }
+.container.box{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background: white;
+    margin: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    
+}
+.container.boxs.imgBox{
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
