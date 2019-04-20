@@ -36,8 +36,29 @@
         <button type="submit" class="btn btn-primary">Add Product</button>
       </form>
     </div>
-    <div class="products_view">
-      <table class="table-stripped">
+  </div>
+  <div class="admin_products_view">
+    {% for category in category_list %}
+      <div class="formheader">{{ category['categoryName'] }} | {{ category['categoryID'] }}</div>
+      <div>
+          <form action="" class="form-group" method="POST">
+            <div class='input-group'>
+              <input type='text' class='form-control' placeholder="{{ category['categoryID'] }}" name="{{ category['categoryID'] }}">
+              <div class='input-group-btn'>
+                <button class='btn btn-default' type='submit'>Update</button>
+              </div>
+            </div>
+          </form>
+          <form action="" class="form-group" method="POST">
+            <div class='input-group'>
+              <input type='text' class='form-control' placeholder="{{ category['categoryName'] }}" name="{{ category['categoryName'] }}">
+              <div class='input-group-btn'>
+                <button class='btn btn-default' type='submit'>Update</button>
+              </div>
+            </div>
+          </form>
+      </div>
+      <table class="table table-striped products_table">
         <thead>
           <tr>
             <th></th>
@@ -50,73 +71,75 @@
           </tr>
         </thead>
         <tbody>
-          {% for product in products_list %}
-            <tr>
-              <td><img src='static/images/product1.png' alt=''></td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['categoryID'] }}" name="{{ product['categoryID'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+          {% for product in product_list %}
+            {% if product['categoryID'] == category['categoryID'] %}
+              <tr>
+                <td><img src="/static/images/{{ product['categoryID'] }}{{ product['productID'] }}.png" alt=''></td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['categoryID'] }}" name="{{ product['categoryID'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['productID'] }}" name="{{ product['productID'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['productID'] }}" name="{{ product['productID'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['name'] }}" name="{{ product['name'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['name'] }}" name="{{ product['name'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['price'] }}" name="{{ product['price'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['price'] }}" name="{{ product['price'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['cost'] }}" name="{{ product['cost'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['cost'] }}" name="{{ product['cost'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <form action="" class="form-group" method="POST">
-                  <div class='input-group'>
-                    <input type='text' class='form-control' placeholder="{{ product['quantity'] }}" name="{{ product['product_id'] }}">
-                    <div class='input-group-btn'>
-                      <button class='btn btn-default' type='submit'>Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="" class="form-group" method="POST">
+                    <div class='input-group'>
+                      <input type='text' class='form-control' placeholder="{{ product['quantity'] }}" name="{{ product['product_id'] }}">
+                      <div class='input-group-btn'>
+                        <button class='btn btn-default' type='submit'>Update</button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </td>
-            </tr>
+                  </form>
+                </td>
+              </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
-    </div>
+    {% endfor %}
   </div>
 {% endblock %}

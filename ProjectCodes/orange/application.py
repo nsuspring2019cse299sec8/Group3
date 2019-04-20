@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash, session
+from flask_socketio import SocketIO
 from productsData import ProductsData
 from cart import Cart
 from usersData import RegistrationForm, LoginForm, UserAuthentication
@@ -8,6 +9,7 @@ from exception import Error
 UPLOAD_FOLDER = '/static/images'
 ALLOWED_EXTENSIONS = set('png')
 application = Flask(__name__)
+socketIO = SocketIO(application)
 
 
 @application.route('/')
@@ -17,10 +19,10 @@ def index():
 
 @application.route('/products/<view>/')
 def products(view):
-    product = ProductsData.customer_view(view)
+    product = ProductsData.view(view)
     category_list = product.category_info()
     product_list = product.products_info()
-    return render_template('products.html', product_list=product_list, category_list=category_list)
+    return render_template('products.html', category_list=category_list, product_list=product_list)
 
 
 @application.route('/register/', methods=['GET', 'POST'])
@@ -50,11 +52,12 @@ def login():
 
 @application.route('/logout/')
 def logout():
+    cart = Cart(session['session_id'])
     session['logged_in'] = False
     session['user_id'] = None
     session['username'] = None
     session['session_id'] = None
-    session['cart'] = 0
+    cart.cancel_cart()
     flash("You are Logged Out", 'success')
     return redirect('/')
 
@@ -76,14 +79,29 @@ def cart_view(action, category_id=None, product_id=None):
                 return redirect('/cart/view')
         elif action == 'remove':
             cart.remove_from_cart(category_id, product_id)
+            return redirect('/cart/view')
+        elif action == 'cancel':
+            cart.cancel_cart()
+            return redirect('/cart/view')
     else:
         flash("You are not logged in", 'danger')
         return redirect('/')
 
 
-@application.route('/admin_panel/')
-def admin_panel():
+@application.route('/admin_panel/<action>/')
+def admin_panel(action):
+    product = ProductsData.view('admin')
+    if action == 'view':
+        category_list = product.category_info()
+        product_list = product.products_info()
+        return render_template('admin_panel.html', category_list=category_list, product_list=product_list)
     return render_template('admin_panel.html')
+
+
+@socketIO.on('disconnect')
+def connection_closed():
+    if session.get('logged_in') is True:
+        logout()
 
 
 if __name__ == '__main__':
