@@ -37,9 +37,20 @@ nav ul li {
   color: white;
 }
 
-nav ul li a:link,nav ul li a:visited {
+nav ul li a:link, nav ul li a:visited{
   color: white;
   text-decoration: none;
+}
+
+.admin_nav {
+  padding: 0;
+  margin: 0;
+  color: white;
+  vertical-align: baseline;
+}
+
+.admin_nav:hover, .admin_nav:active {
+  color: orange;
 }
 
 header nav ul li a:hover {
@@ -119,7 +130,6 @@ header nav ul li a:active {
   text-align:left;
   text-decoration-style: double;
   background-color: rgba(255, 165, 0, 0.7);
-  margin-top: 5px;
   margin-top: 8em;
   margin-bottom: 2em;
   padding: 4em;
@@ -192,4 +202,34 @@ header nav ul li a:active {
 
 .admin_products_view {
   width: 100%;
+}
+
+#admin_view_image {
+  width: 2em;
+}
+
+#table_header, .form_header {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid orange;
+  color: orange;
+  text-align: center;
+  align-content: center;
+}
+
+#table_header_update {
+  width: 20em;
+}
+
+#admin_form_container {
+  width: 30%;
+  text-align: left;
+  text-decoration-style: double;
+  margin-bottom: 2em;
+  padding: 2em;
+}
+
+.form_header {
+  border-bottom: none;
+  text-align: center;
 }
