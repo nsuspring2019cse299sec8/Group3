@@ -3,6 +3,7 @@ from flask_socketio import SocketIO
 from productsData import ProductsData
 from cart import Cart
 from usersData import RegistrationForm, LoginForm, UserAuthentication
+from admin import admin_perform_query
 from exception import Error
 
 
@@ -89,12 +90,26 @@ def cart_view(action, category_id=None, product_id=None):
 
 
 @application.route('/admin_panel/<action>/')
-def admin_panel(action):
+@application.route('/admin_panel/<action>/<category_id>/', methods=['GET', 'POST'])
+@application.route('/admin_panel/<action>/<category_id>/<product_id>/', methods=['GET', 'POST'])
+def admin_panel(action, category_id=None, product_id=None):
     product = ProductsData.view('admin')
     if action == 'view':
         category_list = product.category_info()
         product_list = product.products_info()
         return render_template('admin_panel.html', category_list=category_list, product_list=product_list)
+    else:
+        if request.method == 'POST':
+            admin_perform_query(action, request.form, category_id, product_id, product)
+            """
+            except Exception:
+                flash("Query Unsuccessful", 'danger')
+                return redirect('/admin_panel/view/')
+            else:
+                flash("Query Successful", 'success')
+                return redirect('/admin_panel/view/')
+            """
+            return redirect('/admin_panel/view/')
     return render_template('admin_panel.html')
 
 
