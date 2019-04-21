@@ -15,6 +15,15 @@ def index():
     return render_template('index.html')
 
 
+@application.route('/checkout/', methods=['GET', 'POST'])
+def check_out():
+    cart = Cart(session['session_id'])
+    total_amount = cart.get_cart_total_price()
+    if request.method == 'POST':
+        cart.save_transaction(request.form['order_id'])
+    return render_template('checkout.html', total_amount=total_amount)
+
+
 @application.route('/products/<view>/')
 def products(view):
     product = ProductsData.view(view)
@@ -84,6 +93,11 @@ def cart_view(action, category_id=None, product_id=None):
     else:
         flash("You are not logged in", 'danger')
         return redirect('/')
+
+
+@application.route('/random/')
+def random():
+    return render_template('index.html')
 
 
 @application.route('/admin_panel/<action>/', methods=['Get', 'Post'])

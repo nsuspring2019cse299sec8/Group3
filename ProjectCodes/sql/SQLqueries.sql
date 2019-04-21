@@ -170,3 +170,8 @@ FROM orders
 
 INNER JOIN product_details ON orders.categoryID =product_details.categoryID
 AND salesID=1
+
+
+Query for removing entire row  from table orders for a unique sales_ id
+ DELETE FROM orders
+where sales_id=1

@@ -1,6 +1,7 @@
 from databaseConnection import database
 from exception import Error
 from flask import session
+from datetime import datetime, date
 
 
 class Cart(object):
@@ -114,3 +115,16 @@ class Cart(object):
         total_price = data_cursor.fetchone()
         data_cursor.close()
         return total_price
+
+    def save_transaction(self, order_id):
+        now = str(date.today())
+        total_amount = self.get_cart_total_price()
+        data_cursor = database.cursor(dictionary=True)
+        sql = "INSERT INTO sales(salesID,userID,orderID,totalAmount,date)VALUES(%s, %s, %s, %s, %s)"
+        values = (session['session_id'], session['user_id'], order_id, total_amount['sum'], now)
+        data_cursor.execute(sql, values)
+        database.commit()
+        timestamp = datetime.now().timestamp()
+        session['session_id'] = session['user_id'] + str(timestamp)
+        session['cart'] = 0
+
