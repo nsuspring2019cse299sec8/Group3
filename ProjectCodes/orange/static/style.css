@@ -192,12 +192,17 @@ header nav ul li a:active {
   text-align: right;
 }
 
-#cart_header, #cart_price {
+#cart_header {
   color: orange;
   padding-bottom: 0.25em;
   margin-bottom: 1.25em;
   font-size: 3em;
   opacity: 0.8;
+}
+
+#cart_price {
+  margin-top: 10em;
+  text-align: center;
 }
 
 .admin_products_view {

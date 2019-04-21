@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  <script src="https://www.paypal.com/sdk/js?client-id=AYXPVlAQmmUpskJ8Jh4lViCRRysXJHeha8E9Hg43jOF5rYHujxyEuRJkgv0nSDlVkyf_KDv35DHri168"></script>
   <div class="container table_container">
     <div>
       <h1 id="cart_header">Shopping Cart</h1>
@@ -28,9 +29,10 @@
         {% endfor %}            
       </tbody>
     </table>
-    <div>
-      <h2 id="cart_price">Total Price: {{ total_amount['sum'] }}</h2>
-      <td><a class="btn btn-danger" href="/cart/cancel/">Cancel Cart</a></td>
+    <div id="cart_price">
+      <h2>Total Price: {{ total_amount['sum'] }}</h2>
+      <a class="btn btn-danger" href="/cart/cancel/">Cancel Cart</a>
+      <div id="paypal-button-container"></div>
     </div>
     {% else %}
     <div class="alert alert-info alert-dismissible fade show" id="cart_alert">
@@ -38,5 +40,29 @@
         Cart is <strong>Empty!</strong>
     </div>
     {% endif %}
+    <script>
+      paypal.Buttons({
+        style: {
+                color:  'blue',
+                label:  'pay'
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '10.01'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + data.orderID + '!');
+                    $.post("/transaction-complete/", { order_id: data.orderID });
+          });
+        }
+      }).render('#paypal-button-container');
+    </script>
   </div>
 {% endblock %}
