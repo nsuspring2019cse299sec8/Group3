@@ -193,7 +193,7 @@ header nav ul li a:active {
 }
 
 #cart_header {
-  color: orange;
+  color: rgb(29,29,29);
   padding-bottom: 0.25em;
   margin-bottom: 1.25em;
   font-size: 3em;
@@ -201,9 +201,48 @@ header nav ul li a:active {
 }
 
 #cart_price {
+  color: rgb(29,29,29);
+  opacity: 0.8;
+  margin-top: 5em;
+  text-align: left;
+}
+
+#cart_buttons {
+  margin-top: 2em;
+  text-align: center;
+}
+
+#payment_button {
   margin-top: 10em;
   text-align: center;
 }
+
+#cart_button {
+  width: 15em;
+  margin: 2em;
+  padding: 1em;
+}
+
+.paypal_container {
+  width: 40%;
+}
+
+#payment_container {
+  text-align: center;
+}
+
+#payment_header {
+  color: orange;
+  opacity: 0.8;
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+
+#payment_complete {
+  color: rgb(29,29,29);
+  opacity: 0.8;
+}
+
 
 .admin_products_view {
   width: 100%;
