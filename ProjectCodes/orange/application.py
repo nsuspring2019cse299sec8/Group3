@@ -15,12 +15,13 @@ def index():
     return render_template('index.html')
 
 
-@application.route('/transaction-complete/', methods=['GET', 'POST'])
-def transaction_complete():
-    print('this function is running')
+@application.route('/checkout/', methods=['GET', 'POST'])
+def check_out():
+    cart = Cart(session['session_id'])
+    total_amount = cart.get_cart_total_price()
     if request.method == 'POST':
-        print(request.form['order_id'])
-    return redirect('/')
+        cart.save_transaction(request.form['order_id'])
+    return render_template('checkout.html', total_amount=total_amount)
 
 
 @application.route('/products/<view>/')

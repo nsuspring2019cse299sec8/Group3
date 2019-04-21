@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <script src="https://www.paypal.com/sdk/js?client-id=AYXPVlAQmmUpskJ8Jh4lViCRRysXJHeha8E9Hg43jOF5rYHujxyEuRJkgv0nSDlVkyf_KDv35DHri168"></script>
   <div class="container table_container">
     <div>
       <h1 id="cart_header">Shopping Cart</h1>
@@ -23,16 +22,18 @@
             <td id="table_image"><img src="/static/images/{{ item['categoryID'] }}_{{ item['productID'] }}.png" alt=""></td>
             <td><h4>{{ item['name'] }}</h4></td>
             <td>{{ item['quantity'] }}</td>
-            <td id="table_subtotal"><h4>{{ item['amount'] }}</h4></td>
+            <td id="table_subtotal"><h4> Tk. {{ item['amount'] }}</h4></td>
             <td><a class="btn btn-danger" href="/cart/remove/{{ item['categoryID'] }}/{{ item['productID'] }}/">Remove</a></td>
           </tr>
         {% endfor %}            
       </tbody>
     </table>
     <div id="cart_price">
-      <h2>Total Price: {{ total_amount['sum'] }}</h2>
-      <a class="btn btn-danger" href="/cart/cancel/">Cancel Cart</a>
-      <div id="paypal-button-container"></div>
+      <h2>Total Price: Tk {{ total_amount['sum'] }}</h2>
+    </div>
+    <div id="cart_buttons">
+      <a class="btn btn-outline-danger" id="cart_button" href="/cart/cancel/">Cancel Cart</a>
+      <a class="btn btn-dark" id="cart_button" href="/checkout/">Checkout</a>
     </div>
     {% else %}
     <div class="alert alert-info alert-dismissible fade show" id="cart_alert">
@@ -40,29 +41,5 @@
         Cart is <strong>Empty!</strong>
     </div>
     {% endif %}
-    <script>
-      paypal.Buttons({
-        style: {
-                color:  'blue',
-                label:  'pay'
-        },
-        createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '10.01'
-              }
-            }]
-          });
-        },
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-                    // Show a success message to the buyer
-                    alert('Transaction completed by ' + details.payer.name.given_name + data.orderID + '!');
-                    $.post("/transaction-complete/", { order_id: data.orderID });
-          });
-        }
-      }).render('#paypal-button-container');
-    </script>
   </div>
 {% endblock %}
