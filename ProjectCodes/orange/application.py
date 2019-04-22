@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash, session
-from flask_socketio import SocketIO
+#from flask_socketio import SocketIO
 from productsData import ProductsData
 from cart import Cart
 from usersData import RegistrationForm, LoginForm, UserAuthentication
@@ -7,7 +7,7 @@ from admin import admin_perform_query, rename_image
 from exception import Error
 
 application = Flask(__name__)
-socketIO = SocketIO(application)
+#socketIO = SocketIO(application)
 
 
 @application.route('/')
@@ -128,7 +128,7 @@ def admin_panel(action, category_id=None, product_id=None):
     return render_template('admin_panel.html')
 
 
-@socketIO.on('disconnect')
+#@socketIO.on('disconnect')
 def connection_closed():
     if session.get('logged_in') is True:
         logout()

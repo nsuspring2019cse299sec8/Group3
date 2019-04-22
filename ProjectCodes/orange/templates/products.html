@@ -2,7 +2,7 @@
 
 {% block body %}
   <div id='productNav'>
-    <h1>This is the Product Navigation Area</h1>
+    
   </div>
   <div id="productContainer">
     <div id="showcase">
@@ -18,13 +18,13 @@
                 <h2>{{ product['name'] }}</h2>
               </div>
               <div class="cardPrice">
-                <span>{{ product['price'] }}</span>
+                <h4><span>Tk. {{ product['price'] }}</span></h4>
               </div>
               <div class="cardExtra">
-                <span>Additional Text</span>
+                
               </div>
               <div class="add_to_cart">
-                <a class="btn btn-danger" href="/cart/add/{{ product['categoryID'] }}/{{ product['productID'] }}/">Add to cart</a>
+                <a class="btn btn-outline-info btn-block" href="/cart/add/{{ product['categoryID'] }}/{{ product['productID'] }}/">Add to cart</a>
               </div>
             </div>
           {% endif %}
