@@ -334,7 +334,7 @@ header nav ul li a:active {
 .text{
   width: 100%;
   margin-top: 185px;
-  margin-bottom: 400px;
+  margin-bottom: 600px;
   text-transform: uppercase;
   text-align: center;
   color: orange;
@@ -367,7 +367,7 @@ header nav ul li a:active {
   width: 150px;
   font-family: sans-serif;
   margin-top: 25px;
-   border: 3px solid orange;
+  border: 3px solid orange;
   
   
 }

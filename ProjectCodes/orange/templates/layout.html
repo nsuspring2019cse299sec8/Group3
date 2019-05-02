@@ -26,7 +26,7 @@
           <li><a href="#">About Us</a></li>
           {% if session.logged_in %}
             <li><a href="/cart/view/">Cart  <span class="badge">{{ session.cart }}</span></a></li>
-            <li><a href="/logout/">{{ session.username }} | Logout</a></li>
+            <li><a href="/dashboard/">{{ session.username }}</a> | <a href="/logout/">Sign out</a></li>
           {% else %}
             <li><a href="/login/">Login</a></li>
           {% endif %}

@@ -128,3 +128,14 @@ class Cart(object):
         session['session_id'] = session['user_id'] + str(timestamp)
         session['cart'] = 0
 
+    def get_dashboard(self, user_id):
+        data_cursor = database.cursor(dictionary=True)
+        sql = "SELECT o.categoryID, o.productID, p.name, p.price, o.quantity, s.date FROM sales AS s " \
+              "JOIN orders as o ON s.salesID=o.salesID " \
+              "JOIN product_details as p ON o.categoryID=p.categoryID AND o.productID=p.productID " \
+              "WHERE userID=%s ORDER BY s.date DESC"
+        data_cursor.execute(sql, (user_id,))
+        sql_result = data_cursor.fetchall()
+        data_cursor.close()
+        return sql_result
+

@@ -95,6 +95,17 @@ def cart_view(action, category_id=None, product_id=None):
         return redirect('/')
 
 
+@application.route('/dashboard/')
+def dashboard():
+    if session.get('logged_in') is True:
+        cart = Cart(session['session_id'])
+        items = cart.get_dashboard(session['user_id'])
+        return render_template('dashboard.html', products=items)
+    else:
+        flash("You are not logged in", 'danger')
+        return redirect('/')
+
+
 @application.route('/random/')
 def random():
     return render_template('index.html')
